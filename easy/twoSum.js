@@ -14,12 +14,13 @@ const twoSum = function (arr, target) {
 const cache = {};
 const twoSum = function (arr, target) {
   for (let i = 0; i < arr.length; i++) {
-    let currDiff = target - arr[i];
+    let diff = target - arr[i];
 
-    if (cache[currDiff] !== undefined && cache[currDiff] !== i) {
-      return [i, cache[currDiff]];
+    if (cache[[arr[i]]] !== undefined && cache[diff] !== i) {
+      return [i, cache[diff]];
     }
-    cache[currDiff] = i;
+
+    cache[diff] = i;
   }
   return null;
 };
