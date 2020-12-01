@@ -38,3 +38,33 @@ function findLongestSubString(obj) {
 longestSubString(str);
 longestSubString(str2);
 longestSubString(str3);
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+  if (!s || s.length === 0) return 0;
+
+  let set = new Set();
+  let front = 0;
+  let back = 0;
+  let longest = 0;
+
+  while (back < s.length) {
+    if (!set.has(s.charAt(back))) {
+      set.add(s.charAt(back));
+      longest = Math.max(set.size, longest);
+      back++;
+    } else {
+      set.delete(s.charAt(front));
+      front++;
+    }
+  }
+
+  char = (pos) => {
+    s.charAt(pos);
+  };
+
+  return longest;
+};
