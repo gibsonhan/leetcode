@@ -1,37 +1,49 @@
-let nums = [-1, 0, 1, 2, -1, -4];
-
-/**
- *  1. iterate through each index
- *  2. find all possible combination
- * 	3. find all possible 3 combination
- */
-
-function threeSum(arr) {
-  if (arr.length < 2) return [];
-  let cache = {};
-  let zero = [];
-  for (let i = 0; i < arr.length - 2; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      for (let k = i + 1; k < arr.length; k++) {
-        const sum = arr[i] + arr[j] + arr[k];
-
-        if (sum === 0) {
-          let zeroSum = [arr[i], arr[j], arr[k]];
-
-          //sort combo of index, to compare for duplicates
-          zeroSum.sort();
-
-          //convert to json to store in cache
-          let jsonSum = JSON.stringify(zeroSum);
-          if (!cache[jsonSum]) {
-            cache[jsonSum] = true;
-            zero.push(zeroSum);
-          }
+//Three Sum implemntation that execeds time limit
+var threeSum = function(nums) {
+    let cache = { ['return']: []}
+    fbor(let i = 0; i< nums.length; i++){
+        for(let j = i+1; j < nums.length; j++){
+            for(let k = j+1; k < nums.length; k++){
+                let sum = nums[i] + nums[j] + nums[k]
+                let zeroSum =[nums[i], nums[j], nums[k]].sort()
+                let string = JSON.stringify(zeroSum)  
+                if(sum === 0 && !cache[string]){
+                    cache['return'] = [...cache['return'], zeroSum]
+                    cache[string] = true
+                }
+            }
+              
         }
-      }
     }
-  }
-  console.log(zero);
-}
+    return cache['return']
+};
 
-threeSum(nums);
+//3sum
+var threeSum = function(nums) {
+    let a = nums.sort()
+    let triplets = []
+    let k = nums.length - 1
+    
+    for(let i = 0; i < nums.length; i++){
+        if(i != 0 && nums[i] === nums[i-1]) continue;
+        let j = i + 1
+        let k = nums.length -1
+        while(j < k){
+            if(a[i] + a[j] + a[k] === 0){
+                triplets.push([a[i], a[j], a[k]])
+                j++
+                while(j < k && a[j] === a[j-1]){
+                    j++
+                }
+            }
+            else if([i] + a[j] + a[k] < 0){
+                j++
+            }
+            else {
+                k--
+            }
+                
+        }
+    }
+    return triplets
+};
