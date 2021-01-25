@@ -43,6 +43,10 @@ longestSubString(str3);
  * @param {string} s
  * @return {number}
  */
+
+//The iniution is the sliding door.
+// Reduce the sliding door until it is uniquel
+// what is the premise of sliding door.
 var lengthOfLongestSubstring = function (s) {
   if (!s || s.length === 0) return 0;
 
@@ -61,10 +65,5 @@ var lengthOfLongestSubstring = function (s) {
       front++;
     }
   }
-
-  char = (pos) => {
-    s.charAt(pos);
-  };
-
   return longest;
 };
