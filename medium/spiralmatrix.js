@@ -80,5 +80,5 @@ function traverseSpiral(matrix) {
   return outputArr;
 }
 
-let spiralArr = traverseSpiral(input);
+let spiralArr = traverseSpiral(input2);
 console.log(spiralArr);
