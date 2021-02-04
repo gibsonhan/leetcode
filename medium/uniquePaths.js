@@ -40,7 +40,8 @@ function uniquePaths(matrixDimension) {
     //check if down move is possible
     if (newRow < rowBound) {
       let downMove = [newRow, nodeCol];
-      isPositionEqual(downMove, endPos) === true
+      //if new position reach end, increment count, do not add newPath
+      isPositionEqual(downMove, endPos)
         ? reachEndCount++
         : (newPath = [...newPath, downMove]);
     }
@@ -48,7 +49,8 @@ function uniquePaths(matrixDimension) {
     //check if right move is possible
     if (newCol < colBound) {
       let rightMove = [nodeRow, newCol];
-      isPositionEqual(rightMove, endPos) === true
+      //if new position reach end, increment count, do not add newPath
+      isPositionEqual(rightMove, endPos)
         ? reachEndCount++
         : (newPath = [...newPath, rightMove]);
     }
